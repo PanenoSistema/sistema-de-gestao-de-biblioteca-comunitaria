@@ -1,3 +1,4 @@
+import  os
 while True:
     print('Sistema de Gestão de Biblioteca Comunitária')
     print ('''
@@ -13,7 +14,20 @@ while True:
     opcao = input('Escolha a opção desejada: ')
     
     if(opcao == '1'):
+        os.system('cls')
         print('Usuários')
+        print('1 . Novo usuário')
+        print('2 . Ver usuários')
+        print('3. Voltar')
+        opcao=input('Escolha uma opção: ')
+        if opcao == 1:
+            #cadastra um novo usuário
+            pass
+        elif opcao==2:
+            #listar os usuários
+            pass
+        else:
+            print('opção inválida')
     elif(opcao == '2'):
         print('Livros')
     elif(opcao == '3'):
