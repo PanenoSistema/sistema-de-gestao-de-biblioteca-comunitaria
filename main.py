@@ -10,6 +10,18 @@ empréstimos = []
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# Função para exibir logotipo
+def show_tittle()
+
+# Função para exibir os menus
+def show_menu(menu):
+    clear_screen
+    if(menu == 'usuários')
+    clear_screen()
+        print('Usuários')
+        print('1. Novo usuário')
+        print('2. Ver usuários')
+        print('3. Voltar')
 while True:
     print('Sistema de Gestão de Biblioteca Comunitária')
     print ('''
@@ -24,14 +36,10 @@ while True:
 
     opcao = input('Escolha a opção desejada: ')
     
-    if(opcao == '1'):
-        clear_screen()
-        print('Usuários')
-        print('1 . Novo usuário')
-        print('2 . Ver usuários')
-        print('3. Voltar')
+    if(opcao == '1'): # Opção  'Usuários' do menu principal
+        show_menu(menu)
         opcao=input('Escolha uma opção: ')
-        if opcao == 1:
+        if opcao == 1: 
             #cadastra um novo usuário
             pass
         elif opcao==2:
