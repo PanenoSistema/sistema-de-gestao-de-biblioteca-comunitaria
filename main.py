@@ -1,4 +1,15 @@
 import  os
+
+# Declaração das Variáveis Globais
+opcao = 0
+usuários = []
+livros = []
+empréstimos = []
+
+# Função para Limpar a Tela
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 while True:
     print('Sistema de Gestão de Biblioteca Comunitária')
     print ('''
@@ -14,7 +25,7 @@ while True:
     opcao = input('Escolha a opção desejada: ')
     
     if(opcao == '1'):
-        os.system('cls')
+        clear_screen()
         print('Usuários')
         print('1 . Novo usuário')
         print('2 . Ver usuários')
