@@ -45,7 +45,7 @@ def show_menu(menu):
     if(menu == 'livros'):
         print('1. Livros')
         print('2. Livros indisponíveis')
-        print('0. Voltar')
+        print('0. Voltar') 
 
     if(menu == 'livros'):
         print('VER LIVROS')
@@ -56,6 +56,22 @@ def show_menu(menu):
         print('2. Devolução')
         print('0. Voltar')
 
+def cadastrar(tipo):
+        empréstimos.append([numero, usuários, livros, quantidade])
+
+def listar(tipo):
+    if(tipo == 'usuarios'):
+        for usuario in usuario:
+            print(f'código {usuario[0]} - {usuario[1]} - {usuario[2]}')
+    elif(tipo == 'livro'):
+        for livros in livros:
+            print(f'código {livros[0]} - {livros[1]} - {livros[2]}')
+    elif(tipo == 'emprestimos'):
+        for emprestimos in emprestimos:
+            print(f'emprestimos {emprestimos[0]} - usuário {usuario[emprestimos[1]-1][1]} - livros {livros [emprestimos[2]-1][1]} - qtd = {emprestimos[3]}')
+    else:
+        print('Não há valores a exibir...')
+        pressione_enter()
 
 while True:
     show_tittle()
@@ -64,7 +80,9 @@ while True:
     opcao = input('Escolha a opção desejada: ')
     
     if(opcao == '1'): # Opção  'Usuários' do menu principal
-        show_menu('usuarios')
+        show_menu('novo_usuarios', False)
+        cadastrar('usuarios')
+        pressione_enter()
         opcao=input('Escolha uma opção: ')
         if opcao == 1: 
             #adicionar
@@ -74,7 +92,8 @@ while True:
             pass
         else:
             print('opção inválida')
-    elif(opcao == '2'):
+    elif(opcao == '2'):: # Opção "Livros" do menu principal
+    show_menu('livro')
         print('Livros')
     elif(opcao == '3'):
         print('Empréstimos')
@@ -83,4 +102,5 @@ while True:
     else:
         print('Opção inválida! Digite uma opção do menu...')
 
+clear_screen()
 
