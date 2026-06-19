@@ -1,14 +1,17 @@
 import  os
 
 # Declaração das Variáveis Globais
-opcao = 0
-usuários = []
+opcao = '0'
+usuarios = []
 livros = []
-empréstimos = []
+emprestimos = []
 
 # Função para Limpar a Tela
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def pressione_enter():
+    input (' Precione enter para continuar...')
 
 # Função para exibir logotipo
 def show_tittle():
@@ -23,41 +26,67 @@ def show_tittle():
 def show_menu(menu):
     global opcao
     clear_screen
-
-
+    show_tittle()
+    
     if(menu == 'principal'):
         print('1. Usuários')
         print('2. Livros')
         print('3. Empréstimos')
         print('0. Sair')
-
-    if(menu == 'usuarios'):    
+    elif(menu == 'usuarios'):    
         print('Usuários')
         print('1. Novo usuário')
         print('2. Ver usuários')
         print('0. Voltar')
-
-    if(menu == 'novo_usuario'):
+    elif (menu == 'novo_usuario'):
         print('NOVO USUÁRIO')
     elif(menu == 'listar_usuarios'):
         print('VER USUÁRIOS')
-
-    if(menu == 'livros'):
+    elif(menu == 'livros'):
         print('1. Livros')
-        print('2. Livros indisponíveis')
-        print('0. Voltar') 
-
-    if(menu == 'livros'):
+        print('2. Cadastrar livros')
+        print('0. Voltar')
+    elif(menu == 'livros'):
         print('VER LIVROS')
-
-    if(menu == 'emprestimos'):    
+    elif(menu == 'emprestimos'):    
         print('Empréstimos')
         print('1. Novo empréstimos')
         print('2. Devolução')
         print('0. Voltar')
+    elif(menu == 'novo_emprestimo'):
+        print ('NOVO EMPRÉSTIMO')
+    elif(menu == 'devolucao'):
+        print ('DEVOLUÇÃO')
+    elif(menu == 'emprestimos'):
+        if(opcao == '1'):
+            menu= 'novo_emprestimo'
+        elif(opcao == '2'):
+            menu = 'devolucao'
+        elif(opcao == '0'):
+            menu = 'principal'
+    opcao = input('Digite a poção desejada: ')
 
 def cadastrar(tipo):
-        empréstimos.append([numero, usuários, livros, quantidade])
+    if(tipo == 'usuarios'):
+        codigo = len(usuarios) + 1
+        nome = input('Digite o nome do usuário: ')
+        email = input('Digite o e-mail do usuário: ')
+        # Adicionar o usuário à matriz caso não exista
+        usuarios.append([codigo, nome, email])
+    elif(tipo == 'produtos'):
+        codigo = len(produtos) + 1
+        nome = input('Digite o nome do produto: ')
+        quantidade = float(input('Digite a quantidade do produto: '))
+        valor = float(input('Digite o valor do produto: '))
+        # Adicionar o produto à matriz
+        produtos.append([codigo, nome, quantidade, valor])
+    elif(tipo == 'pedidos'):
+        numero = len(pedidos) + 1
+        usuario = int(input('Digite o código do usuário: '))
+        produto = int(input('Digite o código do produto: '))
+        quantidade = float(input('Digite a quantidade do pedido: '))
+        # Adicionar o pedido à matriz
+        empréstimos.append([usuários, livros, empréstimos])
 
 def listar(tipo):
     if(tipo == 'usuarios'):
@@ -74,33 +103,51 @@ def listar(tipo):
         pressione_enter()
 
 while True:
-    show_tittle()
     show_menu('principal')
-    
-    opcao = input('Escolha a opção desejada: ')
-    
-    if(opcao == '1'): # Opção  'Usuários' do menu principal
-        show_menu('novo_usuarios', False)
-        cadastrar('usuarios')
-        pressione_enter()
-        opcao=input('Escolha uma opção: ')
-        if opcao == 1: 
-            #adicionar
-            pass
-        elif opcao == 2:
-            #listar os usuários
-            pass
+
+    if(opcao == '1'): # Opção "Usuário" do menu principal
+        show_menu('usuarios')
+        if(opcao == '1'): # Opção "Novo Usuário" do menu "Usuário"
+            show_menu('novo_usuario', False)
+            cadastrar('usuarios') 
+        elif(opcao == '2'): # Opção "Listar Usuários" do menu "Usuário"
+            show_menu('listar_usuarios', False)
+            listar('usuarios')
+            pressione_enter()
+        elif(opcao == '0'): # Opção "Voltar" do menu "Usuário"
+            print('VOLTAR')
         else:
-            print('opção inválida')
-    elif(opcao == '2'):: # Opção "Livros" do menu principal
-    show_menu('livro')
-        print('Livros')
-    elif(opcao == '3'):
-        print('Empréstimos')
-    elif(opcao == '0'):
+            print('Opção inválida...')
+    elif(opcao == '2'): # Opção "Produto" do menu principal
+        show_menu('produto')
+        if(opcao == '1'): # Opção "Novo Produto" do menu "Produto"
+            show_menu('novo_produto', False)
+            cadastrar('produtos') 
+        elif(opcao == '2'): # Opção "Listar Usuários" do menu "Produto"
+            show_menu('listar_produtos', False)
+            listar('produtos')
+            pressione_enter()
+        elif(opcao == '0'): # Opção "Voltar" do menu "Produto"
+            print('VOLTAR')
+        else:
+            print('Opção inválida...')
+    elif(opcao == '3'): # Opção "Pedido" do menu principal
+        show_menu('pedido')
+        if(opcao == '1'): # Opção "Novo Pedido" do menu "Pedido"
+            show_menu('novo_pedido', False)
+            cadastrar('pedidos') 
+        elif(opcao == '2'): # Opção "Listar Pedidos" do menu "Pedido"
+            show_menu('listar_pedidos', False)
+            listar('pedidos')
+            pressione_enter()
+        elif(opcao == '0'): # Opção "Voltar" do menu "Pedido"
+            print('VOLTAR')
+        else:
+            print('Opção inválida...')
+    elif(opcao == '0'): # Opção "Sair" do menu principal
         break
     else:
         print('Opção inválida! Digite uma opção do menu...')
 
 clear_screen()
-
+print('O programa foi encerrado.')
