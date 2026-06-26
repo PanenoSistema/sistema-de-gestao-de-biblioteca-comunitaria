@@ -8,6 +8,7 @@ usuarios = []
 livros = []
 emprestimos = []
 usuario_livro = []
+email = []
 
 
 
@@ -34,7 +35,14 @@ def show_tittle():
     ░█▀▄░░█░░█▀▄░█░░░░█░░█░█░░█░░█▀▀░█░░░█▀█░░░░
     ░▀▀░░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀░▀░░░░
     ''')
-
+def mostrar_email():
+    if not email:
+        print("Nenhum email cadastrado.")
+    else:
+        for c in range(0, len(email)):
+            print(f"({c+1}) {email[c]}")
+    
+    
 
 
 
@@ -44,7 +52,7 @@ def mostrar_usuarios():
         print("Nenhum usuário cadastrado.")
     else:
         for c in range(0, len(usuarios)):
-            print(f"({c+1}) {usuarios[c]}")
+            print(f"({c+1}) {usuarios[c]} - {email[c]}")
 
 
 
@@ -114,7 +122,9 @@ def usuarios_():
     elif opcao_usuarios == "2":
         clear_screen()
         print("=== CADASTRAR USUÁRIO ===")
-        add_usuario = input("Digite o nome do usuario: ")
+        add_usuario = input("Digite o nome do usuário: ")
+        add_email = input('Digite o email do usuário: ')
+        email.append(add_email)
         usuarios.append(add_usuario)
         print("Usuario adicionado com sucesso!")
         pressione_enter()
@@ -192,12 +202,3 @@ def escolha_():
 # Execução do programa
 while True:
     escolha_()
-
-
-
-
-
-
-
-
-
