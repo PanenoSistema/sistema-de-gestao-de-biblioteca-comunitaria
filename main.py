@@ -150,7 +150,7 @@ def emprestimos_():
 
     mostrar_usuarios()
     esc_nome = int(input("Digite o numero do nome do usuario: "))
-   
+    
     mostrar_livros()
     esc_livro = int(input("Digite o numero do livro: "))
 
@@ -158,16 +158,16 @@ def emprestimos_():
 
 
     if usuario_livro[esc_livro - 1] == "Disponivel":
-      usuario_livro[esc_livro - 1] = usuarios[esc_nome - 1]
-      print("Livro reservado com sucesso!")
+        usuario_livro[esc_livro - 1] = usuarios[esc_nome - 1]
+        print("Livro reservado com sucesso!")
     else:
-      print("Esse livro já está emprestado para:", usuario_livro[esc_livro - 1])
+        print("Esse livro já está emprestado para:", usuario_livro[esc_livro - 1])
 
 
 
 
     pressione_enter()
-   
+    
 def escolha_():
     clear_screen()
     show_tittle() # Adicionado para exibir o título no menu principal
